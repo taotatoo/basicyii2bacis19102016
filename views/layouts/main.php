@@ -35,8 +35,13 @@ AppAsset::register($this);
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-primary',
-        ],
+        ],      
     ]);
+     $setting = [
+            ['label' => 'สถานะคอมพิวเตอร์','url' => ['/comstatus/index']],
+            ['label' => 'กลุ่มผู้ใช้งาน', 'url' => ['/site/setting']],
+            
+        ];
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'encodeLabels'=>false,
@@ -44,6 +49,8 @@ AppAsset::register($this);
             ['label' => '<span class="glyphicon glyphicon-home"></span> หน้าแรก', 'url' => ['/site/index']],
             ['label' => '<span class="glyphicon glyphicon-wrench"></span> เกี่ยวกับ', 'url' => ['/site/about']],
             ['label' => '<span class="glyphicon glyphicon-earphone"></span> ติดต่อ', 'url' => ['/site/contact']],
+            ['label' => '<span class="glyphicon glyphicon-wrench"></span> ตั้งค่าระบบ', 'items' => $setting],
+            
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
